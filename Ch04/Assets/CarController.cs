@@ -12,10 +12,13 @@ public class CarController : MonoBehaviour
     Vector2 startPos;
     Vector2 endPos;
 
+    AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,8 @@ public class CarController : MonoBehaviour
             endPos = Input.mousePosition;
             float swipeLength = endPos.x - startPos.x;
             speed = swipeLength * speedRatio;
+
+            audio.Play();
         }
 
         transform.position += new Vector3(speed, 0, 0);
