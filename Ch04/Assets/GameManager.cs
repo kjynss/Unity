@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,9 +27,15 @@ public class GameManager : MonoBehaviour
         float length = flag.transform.position.x - car.transform.position.x;
         distance.GetComponent<TextMeshProUGUI>().text = "Distance: " + length.ToString("F2") + "m";
     }
-}
 
-public void QuitGame()
-{
-    Application.Quit();
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void ResetGame() // ReloadScene()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentScene);
+    }
 }
